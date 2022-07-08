@@ -24,4 +24,14 @@ describe("Counter", () => {
     cy.get(decrementSelector).click()
     cy.get(stepperSelector).should('contain.text', -1)
   })
+  it("should render increment button", ()=>{
+    mount(<Counter/>)
+    const incrementSelector = '[aria-label=increment]'
+    cy.get(incrementSelector).should("exist")
+  })
+  it("should render increment button with correct text", ()=>{
+    mount(<Counter/>)
+    const incrementSelector = '[aria-label=increment]'
+    cy.get(incrementSelector).should('have.text', "Increase")
+  })
 });
